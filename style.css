@@ -1,0 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #666;
+}
+canvas {
+  display: block;
+}
+
+button {
+  user-select: none;
+  outline: none;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-family: monospace;
+  cursor: pointer;
+}
