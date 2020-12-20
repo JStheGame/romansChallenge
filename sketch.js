@@ -258,7 +258,7 @@ function draw() {
   
   if(cheatMode) {
     fill(csRed);
-    textSize(30);
+    textSize(24);
     text("cheat mode is enabled!", width / 2, 85);
   }
   pop();
@@ -285,7 +285,7 @@ function draw() {
   fill(255);
   
   if(gameover) {
-    textSize(30);
+    textSize(24);
     text(`congratulations! you found the dog in ${moves} moves!`, width / 2, 930);
     if(moves <= optimalMoves[levelIndex]) {
       fill(colours[1]);
