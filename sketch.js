@@ -34,6 +34,18 @@ class Node {
     fill(this.impossible && cheatMode ? csRed : 255);
     circle(this.x * size, this.y * size + yOffset, size);
     
+    if(this === selectedNode && activeFrames) {
+      fill(171, 143, 51, activeFrames * 10);
+      noStroke();
+      circle(this.x * size, this.y * size + yOffset, size);
+      
+      push();
+      textSize(14);
+      fill(255);
+      text("not\nhere!", this.x * size, this.y * size + yOffset);
+      pop();
+    }
+    
     if(this.foundHere && gameover) {
       push();
       drawDog(this.x * size, this.y * size + yOffset);
@@ -63,6 +75,7 @@ function mousePressed() {
     // select the current node, show that there's nothing there
     selectedNode = hoveredNode;
     moves++;
+    activeFrames = 30;
     
     // evaluate impossibility
     evaluateImpossible();
@@ -109,6 +122,7 @@ let nodes = [];
 let selectedNode;
 let hoveredNode;
 let gameover = false;
+let activeFrames = 0;
 
 const yOffset = 100;
 
@@ -164,7 +178,7 @@ function drawDog(xC, yC, s = 100) {
   fill(0, 50);
   rect(xC, yC + s / 2 - s / 20, s / 40, s / 3 + sin(frameCount / 3) * s / 20, s / 40);
   
-  // 4. mouth balls
+  // 4. mouth
   fill(darkColour);
   circle(xC - s / 6, yC + s / 3, s / 3);
   circle(xC + s / 6, yC + s / 3, s / 3);
@@ -244,6 +258,8 @@ function setup() {
 }
 
 function draw() {
+  if(activeFrames > 0) activeFrames--;
+  
   background(255);
   hoveredNode = null;
   
